@@ -16,7 +16,7 @@ public class MealDetail {
     @SerializedName("strArea")
     @Expose
     private String mealArea;
-    @SerializedName("strInstruction")
+    @SerializedName("strInstructions")
     @Expose
     private String mealInstructions;
     @SerializedName("strMealThumb")

@@ -7,8 +7,10 @@ import android.os.Bundle;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
+import android.view.View;
 import android.webkit.WebView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -30,6 +32,7 @@ public class MealDetailActivity extends AppCompatActivity {
     ListView listView;
     TextView mealName, mealCategory, mealOrigin, mealInstruction, mealTags, mealSource, mealYoutube;
     ImageView mealThumbnail;
+    Button backButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +49,13 @@ public class MealDetailActivity extends AppCompatActivity {
         mealYoutube= findViewById(R.id.youtubeLink);
         mealThumbnail = findViewById(R.id.imageDtail);
         listView = findViewById(R.id.inmeasure);
+        backButton = findViewById(R.id.button);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         Log.e("MyLog", "Test");
         call.enqueue(new Callback<MealsDetailed>() {
             @Override
@@ -146,6 +156,7 @@ public class MealDetailActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),"Something wrong. Please try again later.",Toast.LENGTH_SHORT).show();
             }
         });
+
 
 
     }
