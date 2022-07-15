@@ -1,9 +1,17 @@
 package com.example.sistemaapptest;
 
-public class Meal {
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
+public class Meal {
+    @SerializedName("idMeal")
+    @Expose
     private String mealId;
+    @SerializedName("strMeal")
+    @Expose
     private String mealName;
+    @SerializedName("strMealThumb")
+    @Expose
     private String mealImgURL;
 
     public Meal(String mealId, String mealName, String mealImgURL) {

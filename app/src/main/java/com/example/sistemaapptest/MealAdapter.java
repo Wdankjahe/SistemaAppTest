@@ -36,35 +36,15 @@ public class MealAdapter extends ArrayAdapter<Meal> {
         }
         Meal meal = getItem(position);
         TextView mealName = mealItemView.findViewById(R.id.mealName);
+
         ImageView mealImage = mealItemView.findViewById(R.id.mealImage);
         mealName.setText(meal.getMealName());
+
         new DownloadImageFromInternet(mealImage).execute(meal.getMealImgURL());
 
         return mealItemView;
     }
 
-    private class DownloadImageFromInternet extends AsyncTask<String, Void, Bitmap> {
-        ImageView imageView;
-        public DownloadImageFromInternet(ImageView imageView) {
-            this.imageView=imageView;
-
-        }
-        protected Bitmap doInBackground(String... urls) {
-            String imageURL=urls[0];
-            Bitmap bimage=null;
-            try {
-                InputStream in=new java.net.URL(imageURL).openStream();
-                bimage= BitmapFactory.decodeStream(in);
-            } catch (Exception e) {
-                Log.e("Error Message", e.getMessage());
-                e.printStackTrace();
-            }
-            return bimage;
-        }
-        protected void onPostExecute(Bitmap result) {
-            imageView.setImageBitmap(result);
-        }
-    }
 
 
 }
