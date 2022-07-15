@@ -15,7 +15,7 @@ public interface APIList {
 
     @Headers({"Accept: application/json"})
     @GET("/api/json/v1/1/lookup.php")
-    Call<Meals> getMealByID(@Query("i") String i);
+    Call<MealsDetailed> getMealByID(@Query("i") int i);
 
 
 }
